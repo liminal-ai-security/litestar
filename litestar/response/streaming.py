@@ -111,7 +111,7 @@ class ASGIStreamingResponse(ASGIResponse):
         start_event: HTTPResponseBodyEvent = {
             "type": "http.response.start",
             "status": self.status_code,
-            "jore_body": True,
+            "headers": self.headers,
         }
         await send(start_event)
         async for chunk in self.iterator:
